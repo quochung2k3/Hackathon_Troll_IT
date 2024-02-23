@@ -1,6 +1,7 @@
 // Buoc 1: Khai bao import thu vien
 import 'package:flutter/material.dart';
 import 'package:hackathon_troll_it/widgets/login.dart';
+import 'package:hackathon_troll_it/widgets/register.dart';
 
 // Buoc 2: Main
 void main() {
@@ -18,8 +19,9 @@ class MyApp extends StatelessWidget {
      title: 'Flutter Demo',
      theme: ThemeData(
        primarySwatch: Colors.blue,
-     ), 
-      home: LoginPage(),
+     ),
+      //home: LoginPage(),
+      home: RegisterPage(),
     );
   }
 }
