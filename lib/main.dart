@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon_troll_it/widgets/UserInfo.dart';
 import 'package:hackathon_troll_it/widgets/login.dart';
+import 'package:hackathon_troll_it/widgets/message.dart';
 import 'package:hackathon_troll_it/widgets/register.dart';
 
 // Buoc 2: Main
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
      ),
       //home: LoginPage(),
       //home: RegisterPage(),
-      home: userinfoPage(),
+      //home: userinfoPage(),
+      home: messagePage(),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -17,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
           gradient: LinearGradient(
             colors: [
               Colors.blue,
-              Colors.red,
+              Colors.white,
             ],
           )),
       child: Scaffold(
@@ -62,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
       {isPassword = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
-      borderSide: const BorderSide(color: Colors.white));
+      borderSide: const BorderSide(color: Colors.black));
     return TextField(
       style: const TextStyle(color: Colors.white),
       controller: controller,
@@ -99,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _extraText() {
-    return const Text("Cann't access to your account?",
+    return const Text("Donn't have an account?Signup",
       textAlign: TextAlign.center,
       style: TextStyle(fontSize: 16, color: Colors.white),
     );
