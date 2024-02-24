@@ -6,6 +6,7 @@ class CommentModel {
   String? content;
   int? likes;
   DateTime? createdDate;
+  int? totalLikeComment;
 
   CommentModel({
     this.id,
@@ -15,6 +16,7 @@ class CommentModel {
     this.content,
     this.likes,
     this.createdDate,
+    this.totalLikeComment
   });
 
   CommentModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,7 @@ class CommentModel {
     content = json['content'];
     likes = json['likes'];
     createdDate = DateTime.parse(json['createdDate']);
+    totalLikeComment = json['total_like_comment'];
   }
 
   Map<String, dynamic> toJson() {
@@ -36,6 +39,7 @@ class CommentModel {
       'content': content,
       'likes': likes,
       'createdDate': createdDate?.toIso8601String(),
+      'totalLikeComment' : totalLikeComment,
     };
   }
 }
