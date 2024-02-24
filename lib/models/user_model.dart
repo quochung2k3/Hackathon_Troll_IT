@@ -5,6 +5,7 @@ class UserModel {
   String? email;
   String? password;
   DateTime? createdDate;
+  String? passwordOld;
 
   UserModel({
     this.id,
@@ -13,6 +14,7 @@ class UserModel {
     this.email,
     this.password,
     this.createdDate,
+    this.passwordOld,
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
