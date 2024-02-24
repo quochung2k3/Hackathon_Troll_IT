@@ -14,11 +14,11 @@ class MessageModel {
   });
 
   MessageModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    senderId = json['senderId'];
-    receiverId = json['receiverId'];
+    id = json['mess_id'];
+    senderId = json['sender_id'];
+    receiverId = json['receiver_id'];
     content = json['content'];
-    createdDate = DateTime.parse(json['createdDate']);
+    createdDate = json['created_date'] as DateTime?;
   }
 
   Map<String, dynamic> toJson() {
