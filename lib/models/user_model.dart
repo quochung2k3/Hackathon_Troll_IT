@@ -19,11 +19,11 @@ class UserModel {
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    firstName = json['firstName'];
-    lastName = json['lastName'];
+    firstName = json['first_name'];
+    lastName = json['last_name'];
     email = json['email'];
     password = json['password'];
-    createdDate = DateTime.parse(json['createdDate']);
+    createdDate = DateTime.parse(json['created_date']);
   }
 
   Map<String, dynamic> toJson() {
