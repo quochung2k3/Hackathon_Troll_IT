@@ -7,22 +7,23 @@ import 'package:postgres/messages.dart';
 void main() {
   final MessageDAO messageDAO = MessageDAO();
 
-  messageDAO.deleteAllMessagesByTwoUser(1, 4).then((value) => {
-        print(value.id),
-        print(value.message),
-      });
+  messageDAO.getListTextingUsersByUserId(1).then((value) {
+    value.forEach((element) {
+      print(element.firstName);
+    });
+  });
 }
 
 class MessageDAO {
   final DatabaseConnection _connection = DatabaseConnection();
 
-  Future<List<UserModel>> getListTextingUserByUserId(int userId) async {
+  Future<List<UserModel>> getListTextingUsersByUserId(int userId) async {
     await _connection.openConnection();
 
     final query = '''SELECT * FROM get_list_message_by_user_id('$userId')''';
 
     final result = await _connection.executeQuery(query);
-
+    print(result);
     List<UserModel> users = [];
     result.forEach((element) {
       users.add(UserModel.fromJson(element['']));

@@ -2,22 +2,16 @@ import 'package:hackathon_troll_it/database/ConnectionDB.dart';
 import 'package:hackathon_troll_it/models/id_message_response.dart';
 import 'package:hackathon_troll_it/models/like_post_model.dart';
 import 'package:hackathon_troll_it/models/post_model.dart';
+import 'package:hackathon_troll_it/models/user_model.dart';
 
 void main() {
   final PostDAO postDAO = PostDAO();
 
-  PostModel post = PostModel(
-      id: 12,
-      title: 'title test 2',
-      content: 'content test',
-      anonymous: false,
-      userId: 1,
-      flairId: 1);
-
-  postDAO.updatePost(post).then((value) => {
-        print(value.id),
-        print(value.message),
-      });
+  postDAO.getListUsersLikePost(1).then((value) {
+    value.forEach((element) {
+      print(element.firstName);
+    });
+  });
 
   // LikePostModel likePostModel = LikePostModel(userId: 1, postId: 1);
   // postDAO.likePost(likePostModel).then((value) => {
@@ -49,6 +43,18 @@ void main() {
 class PostDAO {
   final DatabaseConnection _connection = DatabaseConnection();
   final String _tableName = 'Post';
+
+  Future<List<UserModel>> getListUsersLikePost(int postId) async {
+    await _connection.openConnection();
+    final query = '''SELECT * FROM get_list_user_like_post('$postId')''';
+    final result = await _connection.executeQuery(query);
+    List<UserModel> users = [];
+    result.forEach((element) {
+      users.add(UserModel.fromJson(element['']));
+    });
+    await _connection.closeConnection();
+    return users;
+  }
 
   Future likePost(LikePostModel model) async {
     await _connection.openConnection();
