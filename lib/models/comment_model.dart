@@ -21,12 +21,12 @@ class CommentModel {
 
   CommentModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    postId = json['postId'];
-    userId = json['userId'];
-    parentId = json['parentId'];
+    postId = json['post_id'];
+    userId = json['user_id'];
+    parentId = json['parent_id'];
     content = json['content'];
     likes = json['likes'];
-    createdDate = DateTime.parse(json['createdDate']);
+    createdDate = DateTime.parse(json['created_date']);
     totalLikeComment = json['total_like_comment'];
   }
 
