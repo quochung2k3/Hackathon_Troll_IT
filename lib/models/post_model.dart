@@ -19,15 +19,26 @@ class PostModel {
     this.createdDate,
   });
 
+  PostModel.fromDB(List<dynamic> json) {
+    id = json[0] as int;
+    title = json[1] as String;
+    content = json[2] as String;
+    likes = json[3] as int;
+    anonymous = json[4] as bool;
+    userId = json[5] as int;
+    flairId = json[6] as int;
+    createdDate = json[7] as DateTime;
+  }
+
   PostModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    userId = json['userId'];
-    flairId = json['flairId'];
-    title = json['title'];
-    content = json['content'];
-    likes = json['likes'];
-    anonymous = json['anonymous'];
-    createdDate = DateTime.parse(json['createdDate']);
+    id = json['id'] as int?;
+    userId = json['user_id'] as int?;
+    flairId = json['flair_id'] as int?;
+    title = json['title'] as String?;
+    content = json['content'] as String?;
+    likes = json['likes'] as int?;
+    anonymous = json['anonymous'] as bool?;
+    createdDate = json['created_date'] as DateTime?;
   }
 
   Map<String, dynamic> toJson() {
