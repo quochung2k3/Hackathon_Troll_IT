@@ -1,5 +1,6 @@
 // Buoc 1: Khai bao import thu vien
 import 'package:flutter/material.dart';
+import 'package:hackathon_troll_it/widgets/UserInfo.dart';
 import 'package:hackathon_troll_it/widgets/login.dart';
 import 'package:hackathon_troll_it/widgets/register.dart';
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
        primarySwatch: Colors.blue,
      ),
       //home: LoginPage(),
-      home: RegisterPage(),
+      //home: RegisterPage(),
+      home: userinfoPage(),
     );
   }
 }
