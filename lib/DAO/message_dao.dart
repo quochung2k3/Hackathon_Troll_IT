@@ -2,7 +2,6 @@ import 'package:hackathon_troll_it/database/ConnectionDB.dart';
 import 'package:hackathon_troll_it/models/id_message_response.dart';
 import 'package:hackathon_troll_it/models/message_model.dart';
 import 'package:hackathon_troll_it/models/user_model.dart';
-import 'package:postgres/messages.dart';
 
 void main() {
   final MessageDAO messageDAO = MessageDAO();

@@ -3,6 +3,15 @@ import '../models/comment_model.dart';
 import '../models/id_message_response.dart';
 import '../models/user_model.dart';
 
+void main() {
+  final commentDao = CommentDao();
+  commentDao.getAllUserLikeComment(1).then((value) {
+    value.forEach((element) {
+      print(element.firstName);
+    });
+  });
+}
+
 class CommentDao {
   final DatabaseConnection _connection = DatabaseConnection();
 
@@ -10,7 +19,7 @@ class CommentDao {
     await _connection.openConnection();
 
     final query =
-    '''SELECT * FROM user_post('${comment.id}', '${comment.content}')''';
+        '''SELECT * FROM user_post('${comment.id}', '${comment.content}')''';
 
     final result = await _connection.executeQuery(query);
     IdMessageResponse response = IdMessageResponse.fromJson(result[0]['']);
@@ -24,7 +33,7 @@ class CommentDao {
     await _connection.openConnection();
 
     final query =
-    '''SELECT * FROM post_comment('${comment.postId}', '${comment.userId}', 
+        '''SELECT * FROM post_comment('${comment.postId}', '${comment.userId}', 
     '${comment.parentId}', '${comment.content}')''';
 
     final result = await _connection.executeQuery(query);
@@ -37,8 +46,8 @@ class CommentDao {
 
   Future<List<CommentModel>> getAllPosts(int postId) async {
     await _connection.openConnection();
-    final results =
-    await _connection.executeQuery('SELECT * FROM get_list_comment($postId)');
+    final results = await _connection
+        .executeQuery('SELECT * FROM get_list_comment($postId)');
     // use mapped
     await _connection.closeConnection();
     return results
@@ -49,8 +58,7 @@ class CommentDao {
   Future deleteComment(int commentId) async {
     await _connection.openConnection();
 
-    final query =
-    '''SELECT * FROM delete_comment($commentId)''';
+    final query = '''SELECT * FROM delete_comment($commentId)''';
 
     final result = await _connection.executeQuery(query);
     IdMessageResponse response = IdMessageResponse.fromJson(result[0]['']);
@@ -62,13 +70,12 @@ class CommentDao {
 
   Future<List<UserModel>> getAllUserLikeComment(int commentId) async {
     await _connection.openConnection();
-    final results =
-    await _connection.executeQuery('SELECT * FROM get_list_user_like_comment($commentId)');
+    final results = await _connection
+        .executeQuery('SELECT * FROM get_list_user_like_comment($commentId)');
     // use mapped
     await _connection.closeConnection();
     return results
         .map((e) => UserModel.fromJson(e['']))
         .toList(); // convert to list of CommentModel
   }
-
 }
