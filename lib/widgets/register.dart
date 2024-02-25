@@ -1,16 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
   @override
   State<RegisterPage> createState() => _RegisterPage();
 }
 
 class _RegisterPage extends State<RegisterPage> {
 
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController phonenumberController = TextEditingController();
+  TextEditingController firstnameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class _RegisterPage extends State<RegisterPage> {
           gradient: LinearGradient(
             colors: [
               Colors.blue,
-              Colors.red,
+              Colors.white,
             ],
           )),
       child: Scaffold(
@@ -37,15 +40,17 @@ class _RegisterPage extends State<RegisterPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _icon(),
-            const SizedBox(height: 50),
-            _inputField("Username", usernameController),
             const SizedBox(height: 20),
-            _inputField("PhoneNumber", phonenumberController),
+            _inputField("Firstname", firstnameController),
+            const SizedBox(height: 20),
+            _inputField("Lastname", lastnameController),
             const SizedBox(height: 20),
             _inputField("Email", emailController),
             const SizedBox(height: 20),
             _inputField("Password", passwordController, isPassword: true),
-            const SizedBox(height: 50),
+            const SizedBox(height: 20),
+            _inputField("ConfirmPassword", passwordController, isPassword: true),
+            const SizedBox(height: 20),
             _loginBtn(),
             const SizedBox(height: 20),
             _extraText(),
@@ -68,7 +73,7 @@ class _RegisterPage extends State<RegisterPage> {
       {isPassword = false}) {
     var border = OutlineInputBorder(
         borderRadius: BorderRadius.circular(18),
-        borderSide: const BorderSide(color: Colors.white));
+        borderSide: const BorderSide(color: Colors.black));
     return TextField(
       style: const TextStyle(color: Colors.white),
       controller: controller,
@@ -85,10 +90,11 @@ class _RegisterPage extends State<RegisterPage> {
   Widget _loginBtn() {
     return ElevatedButton(
       onPressed: () {
-        debugPrint("Username: " + usernameController.text);
-        debugPrint("PhoneNumber: " + phonenumberController.text);
+        debugPrint("Firstname: " + firstnameController.text);
+        debugPrint("Lastname: " + lastnameController.text);
         debugPrint("Email:" + emailController.text);
         debugPrint("Password : " + passwordController.text);
+        debugPrint("Condfirm: " + passwordController.text);
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
@@ -107,7 +113,7 @@ class _RegisterPage extends State<RegisterPage> {
   }
 
   Widget _extraText() {
-    return const Text("Cann't access to your account?",
+    return const Text("Already have an account?Login",
       textAlign: TextAlign.center,
       style: TextStyle(fontSize: 16, color: Colors.white),
     );
