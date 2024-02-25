@@ -13,11 +13,13 @@ class LoginController {
   void signIn() {
     String username = usernameController.text;
     String password = passwordController.text;
+    debugPrint(username);
     UserModel user = new UserModel();
     user.email = username;
     user.password = password;
+    UserDao userDao = new UserDao();
     // Validate username and password if needed
-    if (1 == 1) {
+    if (userDao.checkLogin(user) == true) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => PostPage()), // Chuyển hướng tới giao diện PostPage
