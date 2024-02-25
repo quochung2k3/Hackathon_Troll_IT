@@ -23,7 +23,7 @@ class UserModel {
     lastName = json['last_name'];
     email = json['email'];
     password = json['password'];
-    createdDate = DateTime.parse(json['created_date']);
+    createdDate = json['created_date'] as DateTime?;
   }
 
   Map<String, dynamic> toJson() {
