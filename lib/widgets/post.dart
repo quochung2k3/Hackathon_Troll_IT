@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackathon_troll_it/models/post_model.dart';
 
 import '../DAO/post_dao.dart';
+import 'message.dart';
 
 class Post extends StatelessWidget {
   @override
@@ -18,10 +19,19 @@ class Post extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 10, top: 10),
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage("https://cdn.pixabay.com/photo/2017/08/14/08/39/emoji-2639736_1280.png"),
+                  GestureDetector(
+                    onTap: () {
+                      // Thực hiện chuyển hướng tại đây khi người dùng nhấp vào CircleAvatar
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => messagePage()), // Thay YourDestinationPage bằng trang bạn muốn chuyển hướng tới
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10, top: 10),
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage("https://cdn.pixabay.com/photo/2017/08/14/08/39/emoji-2639736_1280.png"),
+                      ),
                     ),
                   ),
                   Container(
@@ -33,6 +43,7 @@ class Post extends StatelessWidget {
                   )
                 ],
               ),
+
               Container(
                 margin: EdgeInsets.only(right: 10),
                 child: Icon(Icons.more_horiz),

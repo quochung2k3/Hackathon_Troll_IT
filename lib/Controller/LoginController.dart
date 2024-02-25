@@ -17,7 +17,7 @@ class LoginController {
     user.email = username;
     user.password = password;
     // Validate username and password if needed
-    if (1 == 2) {
+    if (1 == 1) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => PostPage()), // Chuyển hướng tới giao diện PostPage
