@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Controller/LoginController.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -81,8 +83,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _loginBtn() {
     return ElevatedButton(
         onPressed: () {
-          debugPrint("Username: " + usernameController.text);
-          debugPrint("Password : " + passwordController.text);
+          LoginController(context).signIn();
         },
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),

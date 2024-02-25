@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_troll_it/models/post_model.dart';
+
+import '../DAO/post_dao.dart';
 
 class Post extends StatelessWidget {
   @override
