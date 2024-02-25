@@ -26,7 +26,7 @@ class PostPage extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.only(left: 10),
-                child: Text("facebook",
+                child: Text("StayHealthy",
                     style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700, color: Colors.blue),
                 ),
               ),
